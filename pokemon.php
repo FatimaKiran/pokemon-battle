@@ -1,5 +1,6 @@
 
 <?php
+
 class pokemon{
    
    function __construct($name,$health,$attackDamage,$sound,$move,$type){
@@ -85,10 +86,11 @@ class Battle {
                 echo $this->name1 . " hit " .$this->name2 . " for " . $this->attackDamage1  * 1.25 . " damage \n";
                 echo $this->name2 . " health is " . $this->health2 . "\n";
             }
-            
+            sleep(2);
+            echo "\n";
             if($this->type2 ===  $this->weakness1){
                 $this->attackDamage2  = $this->attackDamage2 * 1.25;
-                echo  $this->attackDamage2 . " attack damage 2\n";
+                
                 $this->health1 = ($this->health1)-($this->attackDamage2 * 1.25);
                 echo $this->name2 . " hit " .$this->name1 . " for " . $this->attackDamage2  . " damage \n";
                 echo $this->name1 . " health is " . $this->health1 . "\n";
@@ -98,13 +100,15 @@ class Battle {
                 echo $this->name2. " hit " .$this->name1 . " for " . $this->attackDamage2  . " damage \n";
                 echo $this->name1 . " health is " . $this->health1 . "\n";
             }
+            echo "\n";
+            sleep(2);
             
             
             if($this->health1<=0||$this->health2<=0){
                 if($this->health1 > $this->health2){
-                    echo($this->name1 . " wins!!");
+                    echo "\t  \t🎊 🎊 🎊 🎊" . ($this->name1 . " WINS!!")  . "🎊 🎊 🎊 🎊"; 
                 }else{
-                    echo($this->name2 . " wins!!!!");
+                    echo "\t \t 🎊 🎊 🎊 🎊" .($this->name2 . " WINS!!!!") . "🎊 🎊 🎊 🎊" ;
                 }
             }
 
@@ -114,6 +118,39 @@ class Battle {
     }
 }
 
+//Interacting with user via CLI
+
+
+$player1 = readline('Player1 Name: ');
+$statment = ":\n Bulbasaur\n RoseRade \n Leafeon \n Squirtle \n Osha wott \n Gyarados \n Ho-Oh \n Vulpix \n Infernape\n\nType Below your favourite pokemon name: \n";
+$pokemon1 = readline("Please select any pokemon😄 " .$statment );
+$pokemons = ["Bulbasaur", "RoseRade" , "Squirtle" , "Leafeon",  "Osha wott","Gyarados" , "Ho-Oh",  "Vulpix" , "Infernape"];
+while (!in_array($pokemon1, $pokemons)) {
+    echo "Please select any of the above pokemon\n";
+    $pokemon1 = readline("Type here: ");
+}
+
+echo "\n";
+
+$player2 = readline('Player2 Name: ');
+$pokemon2 = readline("Please select any pokemon😄 " .$statment);
+while (!in_array($pokemon2, $pokemons)) {
+    echo "Please select any of the above pokemon\n";
+    $pokemon2 = readline("Type here: ");
+}
+
+echo "\n\t\t.................. POKEMON BATTLE BEGINS .................\n";
+
+echo "\t\t\t\t\t" . "'".strtoupper($pokemon1). "'" ." VS " . "'".  strtoupper($pokemon2)."'\n"  ;
+
+
+
+
+
+
+
+// assigning values to class
+sleep(1);
 
 
 $jeff = new Pokemon ('jeff', 50, 60, 'meow', 'jump', 'fire');
