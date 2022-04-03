@@ -71,51 +71,32 @@ class Battle {
     }
 
     function fight(){
-       
-    //    echo $this->strength1 . "\n";
-    //    echo $this->strength2. "\n";
-    //    echo $this->weakness1. "\n";
-    //    echo $this->weakness2. "\n";
-    
 
-    // console.log(`${this.pokemon1.name} hit ${this.pokemon2.name} for ${(this.pokemon1.attackDamage*multiplier1)} damage.\n\n${this.pokemon2.name}'s health is now ${this.pokemon2.health}/${this.maxHealth2}.`)
-    // this.pokemon1.health = (this.pokemon1.health)-(this.pokemon2.attackDamage*multiplier2)
-    // console.log(`${this.pokemon2.name} hit ${this.pokemon1.name} for ${(this.pokemon2.attackDamage*multiplier2)} damage.\n\n${this.pokemon1.name}'s health is now ${this.pokemon1.health}/${this.maxHealth1}.`)
-
-
-
-        // echo $this->health1 . "\n";
-        // echo $this->health2;
         while(($this->health1 > 0) and ( $this->health2 > 0)){
             if($this->type1 ===  $this->strength2){
-                $this->attackDamage1  = $this->attackDamage1 * 0.75;
-                echo $this->attackDamage1 . " " . "\n";
-                $this->health2 = ($this->health2)-($this->attackDamage1);
-                echo $this->name1 . " hit " .$this->name2 . " for " . $this->attackDamage1  . " damage \n";
-                echo $this->name2 . " health " . $this->health2 . "\n";
+                $this->health2 = ($this->health2)-($this->attackDamage1 * 0.75);
+
+                echo $this->name1 . " hit " .$this->name2 . " for " . $this->attackDamage1 * 0.75 . " damage \n";
+                echo $this->name2 . " health is " . $this->health2 . "\n";
             }else{
-                $this->attackDamage1  = $this->attackDamage1 * 1.25;
+                // $this->attackDamage1  = $this->attackDamage1 * 1.25;
                 echo $this->attackDamage1 . " " . "\n";
-                $this->health2 = ($this->health2)-($this->attackDamage1);
-                echo $this->name1 . " hit " .$this->name2 . " for " . $this->attackDamage1  . " damage \n";
-                echo $this->name2 . " health " . $this->health2 . "\n";
+                $this->health2 = ($this->health2)-( $this->attackDamage1  = $this->attackDamage1 * 1.25);
+                echo $this->name1 . " hit " .$this->name2 . " for " . $this->attackDamage1  * 1.25 . " damage \n";
+                echo $this->name2 . " health is " . $this->health2 . "\n";
             }
             
-    
-
-            
             if($this->type2 ===  $this->weakness1){
-                echo "helo \n";
                 $this->attackDamage2  = $this->attackDamage2 * 1.25;
-                echo  $this->attackDamage2 . "attack damage 2\n";
-                $this->health1 = ($this->health2)-($this->attackDamage1);
+                echo  $this->attackDamage2 . " attack damage 2\n";
+                $this->health1 = ($this->health1)-($this->attackDamage2 * 1.25);
                 echo $this->name2 . " hit " .$this->name1 . " for " . $this->attackDamage2  . " damage \n";
-                echo $this->name1 . " health " . $this->health1 . "\n";
+                echo $this->name1 . " health is " . $this->health1 . "\n";
             }else{
                 $this->attackDamage1  = $this->attackDamage2 * 1.25;
                 $this->health1 = ($this->health2)-($this->attackDamage1);
                 echo $this->name2. " hit " .$this->name1 . " for " . $this->attackDamage2  . " damage \n";
-                echo $this->name1 . " health " . $this->health1 . "\n";
+                echo $this->name1 . " health is " . $this->health1 . "\n";
             }
             
             
@@ -135,8 +116,8 @@ class Battle {
 
 
 
-$jeff = new Pokemon ('jeff', 20, 20, 'meow', 'jump', 'fire');
-$charlie = new Pokemon('charlie',200, 10,'moo','milk','grass' );
+$jeff = new Pokemon ('jeff', 50, 60, 'meow', 'jump', 'fire');
+$charlie = new Pokemon('charlie',70, 10,'moo','milk','grass' );
 
 $fatima = new Trainer ('fatima');
 $nathan = new Trainer ('nathan');
