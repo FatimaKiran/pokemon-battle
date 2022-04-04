@@ -1,2 +1,6 @@
 # pokemon-battle
-pokemon battle using OOP
+Pokemon battle using OOPs in php
+
+## run php pokemon.php to start the game
+
+
