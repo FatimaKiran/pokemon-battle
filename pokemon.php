@@ -9,7 +9,7 @@ class pokemon{
        $this->attackDamage = $attackDamage;
        $this->sound = $sound;
        $this->move = $move;       
-       $this->type = $type OR 'normal';
+       $this->type = $type;
    } 
 
     function talk(){
@@ -24,11 +24,6 @@ class pokemon{
 class trainer{
     function __construct($name){
         $this->name = $name;
-        $this->storage = [];
-    }
-
-    function catch($value){
-       array_push($this->storage,$value);
     }
 }
 
@@ -118,48 +113,26 @@ class Battle {
     }
 }
 
-//Interacting with user via CLI
 
-
-$player1 = readline('Player1 Name: ');
-$statment = ":\n Bulbasaur\n RoseRade \n Leafeon \n Squirtle \n Osha wott \n Gyarados \n Ho-Oh \n Vulpix \n Infernape\n\nType Below your favourite pokemon name: \n";
-$pokemon1 = readline("Please select any pokemon😄 " .$statment );
-$pokemons = ["Bulbasaur", "RoseRade" , "Squirtle" , "Leafeon",  "Osha wott","Gyarados" , "Ho-Oh",  "Vulpix" , "Infernape"];
-while (!in_array($pokemon1, $pokemons)) {
-    echo "Please select any of the above pokemon\n";
-    $pokemon1 = readline("Type here: ");
-}
-
-echo "\n";
-
-$player2 = readline('Player2 Name: ');
-$pokemon2 = readline("Please select any pokemon😄 " .$statment);
-while (!in_array($pokemon2, $pokemons)) {
-    echo "Please select any of the above pokemon\n";
-    $pokemon2 = readline("Type here: ");
-}
-
-echo "\n\t\t.................. POKEMON BATTLE BEGINS .................\n";
-
-echo "\t\t\t\t\t" . "'".strtoupper($pokemon1). "'" ." VS " . "'".  strtoupper($pokemon2)."'\n"  ;
-
-
-
-
-
-
-
-// assigning values to class
+include 'input.php';
 sleep(1);
+include 'pokemons.php';
+
+$pokemon1Data = $pokemons[$pokemon1];
+$pokemon2Data = $pokemons[$pokemon2];
 
 
-$jeff = new Pokemon ('jeff', 50, 60, 'meow', 'jump', 'fire');
-$charlie = new Pokemon('charlie',70, 10,'moo','milk','grass' );
 
-$fatima = new Trainer ('fatima');
-$nathan = new Trainer ('nathan');
 
-$battle = new Battle($fatima,$charlie,$nathan,$jeff);
+$pokemon1name = new Pokemon ($pokemon1Data[0], $pokemon1Data[1], $pokemon1Data[2], $pokemon1Data[3], $pokemon1Data[4],$pokemon1Data[5]);
+$pokemon2name = new Pokemon($pokemon2Data[0],$pokemon2Data[1], $pokemon2Data[2],$pokemon2Data[3],$pokemon2Data[4],$pokemon2Data[5] );
+
+ 
+
+$firstPlayer = new Trainer ($player1);
+$secondPlayer = new Trainer ($player2);
+
+$battle = new Battle($firstPlayer,$pokemon1name,$secondPlayer ,$pokemon1name);
 $battle->fight();
  
 
